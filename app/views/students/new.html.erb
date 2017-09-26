@@ -1,2 +1,11 @@
-<h1>Students#new</h1>
-<p>Find me in app/views/students/new.html.erb</p>
+<h1>New Student Sign Up</h1>
+
+<%= form_for @student do |f| %>
+    <%= f.text_field :name, placeholder:"First Name" %><br />
+    <%= f.text_field :surname, placeholder:"Last Name" %><br />
+    <%= f.text_field :email, placeholder:"Email" %><br />
+    <%= f.password_field :password, placeholder:"Password" %><br />
+    <%= f.password_field :password_confirmation, placeholder:"Confirm Password" %><br /><br />
+
+    <%= f.submit %>
+<% end %>

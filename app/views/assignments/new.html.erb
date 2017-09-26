@@ -1,2 +1,9 @@
-<h1>Assignments#new</h1>
-<p>Find me in app/views/assignments/new.html.erb</p>
+<h1>Submit a new assignment.</h1>
+
+<%= form_for @assignment do |f| %>
+    <%= f.text_field :title, placeholder:"Title of Article" %><br />
+    <%= f.text_area :body, placeholder:"Report" %><br />
+    <%= f.text_field :category, placeholder:"Category" %><br />
+    <%= f.text_field :link, placeholder:"Link to Article" %><br /><br />
+    <%= f.submit %>
+<% end %>

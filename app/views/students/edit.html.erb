@@ -1,2 +1,7 @@
-<h1>Students#edit</h1>
-<p>Find me in app/views/students/edit.html.erb</p>
+<h1>Change Your Password</h1>
+<%= form_for @student do |f| %>
+    <%= f.password_field :password, placeholder:"New Password" %><br />
+    <%= f.password_field :password_confirmation, placeholder:"Confirm New Password" %><br /><br />
+
+    <%= f.submit %>
+<% end %>
