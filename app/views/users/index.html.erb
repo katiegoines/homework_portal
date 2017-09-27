@@ -1,3 +1,9 @@
 <h1>Science Reporter Portal</h1>
 <p><strong>How to use this portal:</strong> <%= link_to"Log in", new_session_path %> or <%= link_to "create an account", new_user_path %>, then upload your Science Reporters. You can choose whether you reports should be shared only with your teacher or if you want to share them with the class. </p>
-<h2>Interesting Articles</h2>
+<h2>Previous Science Reporter Articles</h2>
+
+<ul>
+    <% @assignments.each do |a| %>
+    <li><%= link_to a.title, "#{a.link}" %></li>
+    <% end %>
+</ul>
