@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :authorize, only: [:show, :edit, :update, :destroy]
-  before_action :student_access, only: [:show, :edit, :update, :destroy]
+  before_action :user_access, only: [:show, :edit, :update, :destroy]
 
 
   def index

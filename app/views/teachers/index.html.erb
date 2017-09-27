@@ -1,13 +1,14 @@
+
 <h2>Teachers</h2>
 <ul>
 <% @teachers.each do |t| %>
-<li><%= link_to "#{t.name} #{t.surname}, #{t.type}, ID: #{t.id}", "/teachers/#{t.id}" %></li>
+<li><%= link_to "#{t.name} #{t.surname}, #{t.user_type}, ID: #{t.id}", "/teachers/#{t.id}" %></li>
 <% end %>
 </ul>
 
 <h2>Students</h2>
 <ul>
 <% @students.each do |s| %>
-<li><%= link_to "#{s.name} #{s.surname}, #{s.type}, ID: #{s.id}", "/students/#{s.id}" %></li>
+<li><%= link_to "#{s.name} #{s.surname}, #{s.user_type}, ID: #{s.id}", "/students/#{s.id}" %></li>
 <% end %>
 </ul>

@@ -1,15 +1,16 @@
 class TeachersController < ApplicationController
   before_action :authorize, only: [:show, :edit, :update, :destroy]
-  before_action :teacher_access, only: [:show, :edit, :update, :destroy]
+  before_action :user_access, only: [:show, :edit, :update, :destroy]
+  
   
   def index
-    @teachers = Teacher.all
-    @students = Student.all
+    @teachers = User.where(user_type:"Teacher")
+    @students = User.where(user_type:"Student")
   end
 
   def show
     @teacher = Teacher.find(params[:id])  
-    @students = Student.all
+    @students = User.where(user_type:"Student")
   end
 
   def new
@@ -55,6 +56,6 @@ class TeachersController < ApplicationController
 
   private
   def teacher_params
-    params.require(:teacher).permit(:name, :surname, :email, :current_password, :password, :password_confirmation)
+    params.require(:teacher).permit(:name, :surname, :email, :password, :password_confirmation)
   end
 end

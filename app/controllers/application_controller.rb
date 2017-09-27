@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :logged_in?, :authorize, :student_access, :teacher_access
   
+  
     def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
@@ -17,20 +18,16 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def student_access
-      if !current_user.admin
+    def user_access
+      if current_user.user_type == "Student"
         @user = User.find(params[:id])
         unless session[:user_id] == @user.id
           flash[:warning] = "You do not have access to this page."
           redirect_to student_path(current_user)
         end
-      end
-    end
-
-    def teacher_access
-      if current_user.admin
-        @teacher =Teacher.find(params[:id])
-        unless session[:user_id] == @teacher.id
+      elsif current_user.user_type == "Teacher"
+        @user = User.find(params[:id])
+        unless session[:user_id] == @user.id || @user.user_type == "Student"
           flash[:warning] = "You do not have access to this page."
           redirect_to teacher_path(current_user)
         end

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
 
+  root 'users#index'
+
+  resources :users, only: [:index, :new, :create]
   resources :teachers
   resources :students
   resources :assignments
