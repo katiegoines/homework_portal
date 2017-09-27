@@ -1,2 +1,30 @@
 
 @import "bootstrap";
+
+// * {
+//     border: 1px solid red;
+// }
+
+// body {
+//     background: rgb(239, 239, 239);
+// }
+
+nav {
+    background: lightgray;
+    // margin-bottom: 10px;
+}
+
+.col-3 {
+    // background: rgb(239, 239, 239);
+    border-right: 1px solid red;
+    padding: 15px 15px 0 15px;
+    text-align: center;
+}
+
+.col-9 {
+    padding: 15px;
+}
+
+.container {
+    background: white;
+}
