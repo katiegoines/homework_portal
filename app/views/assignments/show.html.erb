@@ -1,2 +1,6 @@
-<h1>Assignments#show</h1>
-<p>Find me in app/views/assignments/show.html.erb</p>
+<h1><%= @assignment.title %></h1>
+<p>Article Category: <%= @assignment.category %></p>
+<p><%= @assignment.body %></p>
+
+
+<p>Link to Article: <%= link_to @assignment.link, @assignment.link %></p>

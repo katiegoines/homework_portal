@@ -1,4 +1,7 @@
 class TeachersController < ApplicationController
+  before_action :authorize, only: [:show, :edit, :update, :destroy]
+  before_action :teacher_access, only: [:show, :edit, :update, :destroy]
+  
   def index
     @teachers = Teacher.all
     @students = Student.all
@@ -7,7 +10,6 @@ class TeachersController < ApplicationController
   def show
     @teacher = Teacher.find(params[:id])  
     @students = Student.all
-
   end
 
   def new
@@ -28,17 +30,31 @@ class TeachersController < ApplicationController
   end
 
   def edit
+    @teacher = Teacher.find_by_id current_user.id
   end
 
   def update
+    @user = User.find_by_id current_user.id
+    if @user.update(teacher_params)
+      flash[:error] = "Your changes have been saved."
+      redirect_to teacher_path(@user)
+    else 
+      flash[:error] = "Please check all of your fields."
+      redirect_to edit_teacher_path
+    end
   end
 
   def destroy
+    @teacher = Teacher.find_by_id current_user.id
+    session[:user_id] = nil
+    if @teacher.destroy
+      flash[:warning] = "Your account has been permanently deleted."
+      redirect_to new_session_path
+    end
   end
 
   private
   def teacher_params
-    params.require(:teacher).permit(:name, :surname, :email, :password, :password_confirmation)
+    params.require(:teacher).permit(:name, :surname, :email, :current_password, :password, :password_confirmation)
   end
-
 end

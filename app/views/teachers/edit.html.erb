@@ -1,2 +1,17 @@
-<h1>Teachers#edit</h1>
-<p>Find me in app/views/teachers/edit.html.erb</p>
+<h1>Edit Profile</h1>
+<div class="container">
+<%= form_for @teacher do |f| %>
+    <h3>Change Profile Info</h3>
+    <%= f.text_field :name, placeholder:"First Name" %><br />
+    <%= f.text_field :surname, placeholder:"Last Name" %><br />
+    <%= f.text_field :email, placeholder:"Email" %><br /><br />
+    <h3>Change Password</h3>
+    <%= f.password_field :password, placeholder:"New Password" %><br />
+    <%= f.password_field :password_confirmation, placeholder:"Confirm New Password" %><br /><br />
+
+    <%= f.submit %>
+<% end %>
+
+<%= link_to "Cancel", teacher_path(current_user) %>
+<%= link_to "Delete Account", teacher_path(current_user), data: {confirm: "Are you sure you want to delete your account? This cannot be undone."}, method: 'delete' %>
+</div>

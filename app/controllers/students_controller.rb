@@ -1,10 +1,14 @@
 class StudentsController < ApplicationController
+  before_action :authorize, only: [:show, :edit, :update, :destroy]
+  before_action :student_access, only: [:show, :edit, :update, :destroy]
+
+
   def index
     @students = Student.all
   end
 
   def show
-    @student = Student.find(params[:id])
+    # @student = Student.find(params[:id])
     @user = User.find(params[:id])
   end
 
