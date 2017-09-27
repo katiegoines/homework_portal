@@ -1,2 +1,22 @@
-<h1>Assignments#edit</h1>
-<p>Find me in app/views/assignments/edit.html.erb</p>
+<div class="formish">
+        <h1 class="form_head">Edit your assignment.</h1>
+    <%= form_for @assignment do |f| %>
+        <div class="form-group">
+            <%= f.label :title, "Title of Article" %><br />
+            <%= f.text_field :title, class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :body, "Science Reporter" %><br />
+            <%= f.text_area :body, class:"form-control" %><br />
+        </div>
+        <div class="form-group">
+            <%= f.label :category, "Category of Article" %><br />
+            <%= f.text_field :category, class:"form-control" %><br />
+        </div>
+        <div class="form-group">
+            <%= f.label :link, "Link to Article" %><br />
+            <%= f.text_field :link, class:"form-control" %><br /><br />
+        </div>
+            <%= f.submit "Update", class:"btn, btn-primary" %>
+    <% end %>
+</div>

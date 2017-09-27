@@ -1,7 +1,10 @@
-<h1>Change Your Password</h1>
+<div class="formish">
+
+<h1 class="form_head">Change Your Password</h1>
 <%= form_for @student do |f| %>
     <%= f.password_field :password, placeholder:"New Password" %><br />
     <%= f.password_field :password_confirmation, placeholder:"Confirm New Password" %><br /><br />
 
     <%= f.submit %>
 <% end %>
+</div>

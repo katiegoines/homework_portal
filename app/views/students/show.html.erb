@@ -1,15 +1,28 @@
 <h1><%= "#{@user.name} #{@user.surname} (ID: #{@user.id})" %></h1>
 
 
-<h2>These are my reports: </h2>
-<ul>
-    <% @user.assignments.each do |a| %>
-        <li><%= link_to a.title, "/assignments/#{a.id}" %></li> 
-    <% end %>
-</ul>
-
-<% if !current_user.admin %>
-    <%= link_to "Post a new assignment", new_assignment_path %><br /><br />
-    <%= link_to "Edit Profile", edit_student_path %>
+<% unless current_user.user_type == "Teacher" %>
+    <%= link_to "Post a new assignment", new_assignment_path, class:'btn btn-primary' %><br /><br />
 <% end %>
 
+      
+
+      <% @user.assignments.reverse.each do |a| %>
+      <div class="card" style="width: 20rem;">
+            <div class="card-body">
+                <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
+                <p class="card-text"><%= a.body.truncate(80) %></p>
+                <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
+                <%= link_to "Edit Report", "/assignments/#{a.id}/edit", class:'card-link' %>
+                <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
+            </div>
+        </div>
+        <% end %>
+
+        <div class="clear"></div>
+
+    <div>
+    <% unless current_user.user_type == "Teacher" %>
+        <%= link_to "Change Password", edit_student_path, class:'btn btn-default' %>
+    <% end %>
+</div>

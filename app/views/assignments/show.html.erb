@@ -4,3 +4,5 @@
 
 
 <p>Link to Article: <%= link_to @assignment.link, @assignment.link %></p>
+
+<%= link_to "Edit", "/assignments/#{@assignment.id}/edit", class:'btn btn-primary' %>

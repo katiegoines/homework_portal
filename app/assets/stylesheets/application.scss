@@ -9,6 +9,19 @@
 //     background: rgb(239, 239, 239);
 // }
 
+// .container {
+//     margin-left: 20px;
+//     margin-right: 20px;
+// }
+
+.formish {
+    margin: 15px;
+}
+
+.form_head {
+    margin-bottom: 20px;
+}
+
 nav {
     background: lightgray;
     // margin-bottom: 10px;
@@ -18,7 +31,6 @@ nav {
     // background: rgb(239, 239, 239);
     border-right: 1px solid red;
     padding: 15px 15px 0 15px;
-    text-align: center;
 }
 
 .col-9 {
@@ -27,4 +39,14 @@ nav {
 
 .container {
     background: white;
+}
+
+.card {
+    float:left;
+    margin: 15px;
+    height: 215px;
+}
+
+.clear {
+    clear:both;
 }

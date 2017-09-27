@@ -1,5 +1,10 @@
 class AssignmentsController < ApplicationController
+  before_action :teacher_permissions, only: [:new, :create, :edit, :update, :destroy]
+  before_action :student_permissions, except: [:index, :new, :create]  
+  before_action :report_links
+
   def index
+    @assignment = Assignment.new
   end
 
   def show
@@ -24,13 +29,23 @@ class AssignmentsController < ApplicationController
   end
 
   def edit
+    @assignment = Assignment.find(params[:id])
   end
 
   def update
+    @assignment = Assignment.find(params[:id])
+    if @assignment.update(assignment_params)
+      flash[:error] = "Your changes have been saved."
+      redirect_to assignment_path(@assignment)
+    else 
+      flash[:error] = "Please check all of your fields."
+      redirect_to edit_assignment_path
+    end
   end
 
   def destroy
   end
+
 
   private
   def assignment_params

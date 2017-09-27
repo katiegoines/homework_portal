@@ -1,2 +1,6 @@
-<h1>Assignments#index</h1>
-<p>Find me in app/views/assignments/index.html.erb</p>
+<%= form_tag("/assignments") do |f| %>
+<div class="form-group">
+    <%= f.label_tag :link, "Try Your Link" %><br />
+    <%= f.text_field_tag :link, class:"form-control" %><br /><br />
+</div>
+<% end %>

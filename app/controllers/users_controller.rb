@@ -1,4 +1,6 @@
 class UsersController < ApplicationController  
+  before_action :report_links
+  
   def index
     @assignments = Assignment.all
   end
@@ -16,8 +18,17 @@ class UsersController < ApplicationController
         flash[:warning] = "Account created."
         redirect_to teacher_path(@user)
       else
-        flash[:error] = "Account was not created."
-        redirect_to new_user_path
+        if !!@user.email
+          flash[:error] = "This email is already in use"
+          redirect_to new_user_path
+        elsif
+          @user.password == '' || @user.password_confirmation == ''
+          flash[:error] = "Plesae enter and confirm password."
+          redirect_to new_user_path
+        else
+          flash[:error] = "Account was not created. Please complete all fields." 
+          redirect_to new_user_path
+        end
       end
     elsif @user.code == ''
       @user.user_type = "Student"
@@ -26,8 +37,17 @@ class UsersController < ApplicationController
         flash[:warning] = "Account created."
         redirect_to student_path(@user)
       else
-        flash[:error] = "Account was not created."
-        redirect_to new_user_path
+        if !!@user.email
+          flash[:error] = "This email is already in use"
+          redirect_to new_user_path
+        elsif
+          @user.password == '' || @user.password_confirmation == ''
+          flash[:error] = "Plesae enter and confirm password."
+          redirect_to new_user_path
+        else
+          flash[:error] = "Account was not created. Please complete all fields." 
+          redirect_to new_user_path
+        end
       end
     else
       flash[:warning] = "Please check all fields."

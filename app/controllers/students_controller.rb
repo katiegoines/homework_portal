@@ -1,7 +1,9 @@
 class StudentsController < ApplicationController
   before_action :authorize, only: [:show, :edit, :update, :destroy]
   before_action :user_access, only: [:show, :edit, :update, :destroy]
-
+  before_action :teacher_permissions, only: [:new, :create, :edit, :update, :destroy]  
+  before_action :report_links
+  
 
   def index
     @students = Student.all
