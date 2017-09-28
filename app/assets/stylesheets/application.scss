@@ -44,9 +44,16 @@ nav {
 .card {
     float:left;
     margin: 15px;
-    height: 215px;
+}
+
+.card-body {
+    height: 215px;    
 }
 
 .clear {
     clear:both;
+}
+
+.card-footer {
+    font-size: 10px;
 }

@@ -39,22 +39,22 @@ class ApplicationController < ActionController::Base
     end
 
     def user_access
-      if current_user.user_type == "Student"
+      # if current_user.user_type == "Student"
         @user = User.find(params[:id])
         unless session[:user_id] == @user.id
           flash[:warning] = "You do not have access to this page."
           redirect_to student_path(current_user)
         end
-      elsif current_user.user_type == "Teacher"
-        @user = User.find(params[:id])
-        unless session[:user_id] == @user.id || @user.user_type == "Student"
-          flash[:warning] = "You do not have access to this page."
-          redirect_to teacher_path(current_user)
-        end
-      end
+      # elsif current_user.user_type == "Teacher"
+      #   @user = User.find(params[:id])
+      #   unless session[:user_id] == @user.id || @user.user_type == "Student"
+      #     flash[:warning] = "You do not have access to this page."
+      #     redirect_to teacher_path(current_user)
+      #   end
+      # end
     end
 
     def report_links
-      @reports = Assignment.all
+      @reports = Assignment.all.order('updated_at DESC')
     end 
 end

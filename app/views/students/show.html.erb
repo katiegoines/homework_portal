@@ -15,7 +15,11 @@
                 <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
                 <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
             </div>
+            <div class="card-footer text-muted">
+                <%= "Last updated: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")}" %>
+            </div>
         </div>
+        
         <% end %>
 
         <div class="clear"></div>
@@ -30,6 +34,9 @@
                   <%= link_to "Edit Report", "/assignments/#{a.id}/edit", class:'card-link' %>
                   <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
               </div>
+              <div class="card-footer text-muted">
+                    <%= "Last updated: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")}" %>
+                </div>
           </div>
           <% end %>
   

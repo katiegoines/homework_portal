@@ -3,7 +3,7 @@
 <h2>List of All Students</h2>
 
 <% @students.each do |s| %>
-    <%= link_to "#{s.name} #{s.surname}", "/students/#{s.id}" %><br />
+    <%= "#{s.name} #{s.surname}" %><br />
     <% @assignments.where(user_id:"#{s.id}").reverse.each do |a| %>
     <div class="card" style="width: 20rem;">
           <div class="card-body">
@@ -13,6 +13,9 @@
               <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
               <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
           </div>
+          <div class="card-footer text-muted">
+                <%= "Last updated: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at %l:%M%P")}" %>
+            </div>
       </div>
       <% end %>
       <div class="clear"></div>
