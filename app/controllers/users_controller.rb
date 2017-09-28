@@ -1,17 +1,28 @@
 class UsersController < ApplicationController  
+  before_action :authorize, only: [:show, :edit, :update, :destroy]  
   before_action :report_links
+  before_action :access, except: [:index]
   
   def index
-    @assignments = Assignment.all
   end
+
+
+
+  def show
+    @user = User.find(params[:id])
+    if @user.user_type == "Teacher"
+      @students = User.where(user_type:"Student")
+      @assignments = Assignment.where(submit:"Yes")
+    end
+  end
+
+
   
   def new
     @user = User.new
   end
 
-  def show
-    redirect_to new_session_path
-  end
+
 
   def create
     @user = User.new(user_params)
@@ -20,7 +31,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         flash[:warning] = "Account created."
-        redirect_to teacher_path(@user)
+        redirect_to user_path(@user)
       else
         if !!@user.email
           flash[:error] = "This email is already in use"
@@ -39,7 +50,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         flash[:warning] = "Account created."
-        redirect_to student_path(@user)
+        redirect_to user_path(@user)
       else
         if !!@user.email
           flash[:error] = "This email is already in use"
@@ -58,6 +69,39 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     end 
   end
+
+
+
+  def edit
+    @user = User.find_by_id current_user.id
+  end
+
+
+
+  def update
+    @user = User.find_by_id current_user.id
+    if @user.update(user_params)
+      flash[:error] = "Your changes have been saved."
+      redirect_to user_path(@user)
+    else 
+      flash[:error] = "Please check all of your fields."
+      redirect_to edit_user_path
+    end
+  end
+
+
+  def destroy
+    @user = User.find_by_id current_user.id
+    if @user.user_id == "Teacher"
+      session[:user_id] = nil
+      if @user.destroy
+        flash[:warning] = "Your account has been permanently deleted."
+        redirect_to new_session_path
+      end
+    end
+  end
+
+
 
   private
   def user_params

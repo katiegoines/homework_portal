@@ -1,12 +1,17 @@
 class AssignmentsController < ApplicationController
-  before_action :teacher_permissions, only: [:new, :create, :edit, :update, :destroy]
-  before_action :student_permissions, except: [:index, :new, :create]  
+  before_action :authorize
+  before_action :assignment_access, except: [:index, :new, :create]  
   before_action :report_links
+  
 
   def index
     @user = User.find_by_id current_user.id
-    @submitted = @user.assignments.where(submit:"Yes").reverse
-    @in_prog = @user.assignments.where(submit:"No").reverse.each
+    if student?
+      @submitted = @user.assignments.where(submit:"Yes").reverse
+      @in_prog = @user.assignments.where(submit:"No").reverse.each
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def show
@@ -33,7 +38,6 @@ class AssignmentsController < ApplicationController
   def edit
     @assignment = Assignment.find(params[:id])
     if @assignment.submit == "Yes"
-      flash[:warning] = "This has already been submitted. You cannot make further edits."
       redirect_to assignment_path(@assignment)
     end
   end

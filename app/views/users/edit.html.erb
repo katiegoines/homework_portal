@@ -1,0 +1,36 @@
+<div class="formish">
+    <%= form_for @user do |f| %>
+        <% unless @user.user_type == "Student" %>
+            <h1 class="form_head">Edit Profile</h1>
+            <h3>Change Profile Info</h3>
+            <div class="form-group">
+                <%= f.label :name, "First Name" %>
+                <%= f.text_field :name, class:"form-control" %>
+            </div>
+            <div class="form-group">
+                <%= f.label :surname, "Last Name" %>
+                <%= f.text_field :surname, class:"form-control"  %>
+            </div>
+            <div class="form-group">
+                <%= f.label :email, "Email Address" %>
+                <%= f.text_field :email, class:"form-control"  %>
+            </div>
+        <% end %>
+            
+            <h3>Change Password</h3>
+            <div class="form-group">
+                <%= f.label :password, "New Password" %>
+                <%= f.password_field :password, class:"form-control"  %>
+            </div>
+            <div class="form-group">
+                <%= f.label :password_confirmation, "Confirm New Password" %>
+                <%= f.password_field :password_confirmation, class:"form-control"  %>
+            </div>
+        
+            <%= f.submit "Update", class:"btn btn-primary" %>
+            <%= link_to "Cancel", user_path(current_user), class:"btn btn-secondary" %>
+            <% unless @user.user_type == "Student" %>
+                <%= link_to "Delete Account", user_path(current_user), data: {confirm: "Are you sure you want to delete your account? This cannot be undone."}, method: 'delete', class:"btn btn-danger" %>
+            <% end %>
+    <% end %>
+</div>

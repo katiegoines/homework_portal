@@ -19,23 +19,23 @@ class StudentsController < ApplicationController
     @student = Student.new
   end
 
-  def create
-    @student = Student.new(student_params)
-    @student.admin = false
-    if @student.save
-      session[:user_id] = @student.id
-      flash[:warning] = "Account created."
-      redirect_to student_path(@student)
-    else
-      flash[:error] = "Account was not created."
-      redirect_to new_student_path
-    end
-  end
+  # def create
+  #   @student = Student.new(student_params)
+  #   @student.admin = false
+  #   if @student.save
+  #     session[:user_id] = @student.id
+  #     flash[:warning] = "Account created."
+  #     redirect_to student_path(@student)
+  #   else
+  #     flash[:error] = "Account was not created."
+  #     redirect_to new_student_path
+  #   end
+  # end
 
-  def edit
-    @student = Student.find_by_id current_user.id
+  # def edit
+  #   @student = Student.find_by_id current_user.id
     
-  end
+  # end
 
   def update
     @student = Student.find_by_id current_user.id

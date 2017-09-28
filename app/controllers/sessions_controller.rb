@@ -9,9 +9,9 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       if @user.user_type == "Teacher"
-          redirect_to teacher_path(@user)
+          redirect_to user_path(@user)
       else
-          redirect_to student_path(@user)
+          redirect_to user_path(@user)
       end
     else 
       flash[:alert] = "Incorrect email or password."
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    redirect_to root_path
+    redirect_to new_session_path
     session[:user_id] = nil
   end
 end

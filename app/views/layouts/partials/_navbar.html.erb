@@ -35,7 +35,7 @@
         </li>
         <% if logged_in? %>  
         <li class="nav-item">
-            <%= link_to "Logged in as #{current_user.name} #{current_user.surname}", current_user.user_type == "Teacher" ? teacher_path(current_user) : student_path(current_user), class: "nav-link" %>
+            <%= link_to "Logged in as #{current_user.name} #{current_user.surname}", user_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
             <%= link_to "Log Out", logout_path, method: 'delete', class: "nav-link" %>

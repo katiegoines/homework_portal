@@ -20,22 +20,22 @@ class TeachersController < ApplicationController
   #   @teacher = Teacher.new
   # end
 
-  def create
-    @teacher = Teacher.new(teacher_params)
-    @teacher.admin = true
-    if @teacher.save
-      session[:user_id] = @teacher.id
-      flash[:warning] = "Account created."
-      redirect_to teacher_path(@teacher)
-    else
-      flash[:error] = "Account was not created."
-      redirect_to new_teacher_path
-    end
-  end
+  # def create
+  #   @teacher = Teacher.new(teacher_params)
+  #   @teacher.admin = true
+  #   if @teacher.save
+  #     session[:user_id] = @teacher.id
+  #     flash[:warning] = "Account created."
+  #     redirect_to teacher_path(@teacher)
+  #   else
+  #     flash[:error] = "Account was not created."
+  #     redirect_to new_teacher_path
+  #   end
+  # end
 
-  def edit
-    @teacher = Teacher.find_by_id current_user.id
-  end
+  # def edit
+  #   @teacher = Teacher.find_by_id current_user.id
+  # end
 
   def update
     @user = User.find_by_id current_user.id
