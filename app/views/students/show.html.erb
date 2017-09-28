@@ -6,20 +6,36 @@
 <% end %>
 
       
-
-      <% @user.assignments.reverse.each do |a| %>
+    <h2>Submitted</h2>
+      <% @user.assignments.where(submit:"Yes").reverse.each do |a| %>
       <div class="card" style="width: 20rem;">
             <div class="card-body">
                 <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
                 <p class="card-text"><%= a.body.truncate(80) %></p>
                 <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
-                <%= link_to "Edit Report", "/assignments/#{a.id}/edit", class:'card-link' %>
                 <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
             </div>
         </div>
         <% end %>
 
         <div class="clear"></div>
+
+        <h2>In Progress</h2>
+        <% @user.assignments.where(submit:"No").reverse.each do |a| %>
+        <div class="card" style="width: 20rem;">
+              <div class="card-body">
+                  <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
+                  <p class="card-text"><%= a.body.truncate(80) %></p>
+                  <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
+                  <%= link_to "Edit Report", "/assignments/#{a.id}/edit", class:'card-link' %>
+                  <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
+              </div>
+          </div>
+          <% end %>
+  
+          <div class="clear"></div>
+
+
 
     <div>
     <% unless current_user.user_type == "Teacher" %>

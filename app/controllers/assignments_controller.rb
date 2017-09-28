@@ -30,6 +30,10 @@ class AssignmentsController < ApplicationController
 
   def edit
     @assignment = Assignment.find(params[:id])
+    if @assignment.submit == "Yes"
+      flash[:warning] = "This has already been submitted. You cannot make further edits."
+      redirect_to assignment_path(@assignment)
+    end
   end
 
   def update
@@ -49,6 +53,6 @@ class AssignmentsController < ApplicationController
 
   private
   def assignment_params
-    params.require(:assignment).permit(:title, :body, :category, :link)
+    params.require(:assignment).permit(:title, :body, :category, :link, :submit)
   end
 end

@@ -12,6 +12,7 @@ class TeachersController < ApplicationController
   def show
     @teacher = Teacher.find(params[:id])  
     @students = User.where(user_type:"Student")
+    @assignments = Assignment.where(submit:"Yes")
   end
 
   def new
