@@ -15,9 +15,9 @@ class TeachersController < ApplicationController
     @assignments = Assignment.where(submit:"Yes")
   end
 
-  def new
-    @teacher = Teacher.new
-  end
+  # def new
+  #   @teacher = Teacher.new
+  # end
 
   def create
     @teacher = Teacher.new(teacher_params)

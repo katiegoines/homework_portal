@@ -2,6 +2,10 @@
         <h1 class="form_head">Edit your assignment.</h1>
     <%= form_for @assignment do |f| %>
         <div class="form-group">
+            <%= f.label :assignment_number, "Assignment number" %>
+            <%= f.number_field :assignment_number, disabled: true, class:"form-control" %>
+        </div>
+        <div class="form-group">
             <%= f.label :title, "Title of Article" %><br />
             <%= f.text_field :title, class:"form-control" %>
         </div>
@@ -22,6 +26,8 @@
             <%= f.select :submit, ["No", "Yes"], class:"form-control" %>
         </div>
         <br />
-            <%= f.submit "Update", class:"btn, btn-primary" %>
+            <%= f.submit "Update", class:"btn btn-primary" %>
+            <%= link_to "Cancel", assignment_path, class:"btn btn-secondary" %>
+            <%= link_to "Delete", assignment_path, data: {confirm: "Are you sure you want to delete this report? This cannot be undone."}, method: 'delete', class:"btn btn-danger" %>
     <% end %>
 </div>

@@ -4,7 +4,7 @@ class AssignmentsController < ApplicationController
   before_action :report_links
 
   def index
-    @assignment = Assignment.new
+    @user = User.find_by_id current_user.id
   end
 
   def show
@@ -48,11 +48,16 @@ class AssignmentsController < ApplicationController
   end
 
   def destroy
+    @assignment = Assignment.find(params[:id])
+    if @assignment.destroy
+      flash[:warning] = "Your report has been deleted."
+      redirect_to student_path(current_user)
+    end
   end
 
 
   private
   def assignment_params
-    params.require(:assignment).permit(:title, :body, :category, :link, :submit)
+    params.require(:assignment).permit(:title, :body, :category, :link, :submit, :assignment_number)
   end
 end

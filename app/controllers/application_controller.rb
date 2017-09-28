@@ -55,6 +55,6 @@ class ApplicationController < ActionController::Base
     end
 
     def report_links
-      @reports = Assignment.all.order('updated_at DESC')
+      @reports = Assignment.where(submit:"Yes").order('updated_at DESC')
     end 
 end

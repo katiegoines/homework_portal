@@ -1,6 +1,42 @@
-<%= form_tag("/assignments") do |f| %>
-<div class="form-group">
-    <%= f.label_tag :link, "Try Your Link" %><br />
-    <%= f.text_field_tag :link, class:"form-control" %><br /><br />
-</div>
+<% unless current_user.user_type == "Teacher" %>
+<%= link_to "Post a new assignment", new_assignment_path, class:'btn btn-primary' %><br /><br />
 <% end %>
+
+  
+<h2>Submitted</h2>
+  <% @user.assignments.where(submit:"Yes").reverse.each do |a| %>
+  <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
+            <p class="card-text"><%= a.body.truncate(80) %></p>
+            <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
+            <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
+        </div>
+        <div class="card-footer text-muted">
+            <%= "Last updated: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")}" %>
+        </div>
+    </div>
+    <% end %>
+
+    <div class="clear"></div>
+
+    <h2>In Progress</h2>
+    <% @user.assignments.where(submit:"No").reverse.each do |a| %>
+    <div class="card" style="width: 20rem;">
+          <div class="card-body">
+              <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
+              <p class="card-text"><%= a.body.truncate(80) %></p>
+              <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
+              <%= link_to "Edit Report", "/assignments/#{a.id}/edit", class:'card-link' %>
+              <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
+          </div>
+          <div class="card-footer text-muted">
+                <%= "Last updated: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")}" %>
+            </div>
+      </div>
+      <% end %>
+
+      <div class="clear"></div>
+
+
+
