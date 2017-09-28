@@ -12,8 +12,8 @@ class StudentsController < ApplicationController
   def show
     # @student = Student.find(params[:id])
     @user = User.find(params[:id])
-    @last = Assignment.where(submit:"Yes").order("updated_at DESC").first
-    @second_to_last = Assignment.where(submit:"Yes").order("updated_at DESC").offset(1).first
+    # @last = Assignment.where(submit:"Yes").order("updated_at DESC").first
+    # @second_to_last = Assignment.where(submit:"Yes").order("updated_at DESC").offset(1).first
   end
 
   def new
