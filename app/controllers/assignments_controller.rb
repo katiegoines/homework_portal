@@ -5,6 +5,8 @@ class AssignmentsController < ApplicationController
 
   def index
     @user = User.find_by_id current_user.id
+    @submitted = @user.assignments.where(submit:"Yes").reverse
+    @in_prog = @user.assignments.where(submit:"No").reverse.each
   end
 
   def show

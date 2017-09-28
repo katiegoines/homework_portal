@@ -5,9 +5,7 @@
 
 <p>Link to Article: <%= link_to @assignment.link, @assignment.link %></p>
 
-<%= link_to "Edit", "/assignments/#{@assignment.id}/edit", class:'btn btn-primary' %>
 <% if @assignment.submit == "No" %>
-    <%= link_to "Back", url_for(:back), class:'btn btn-secondary' %>
-<% else %>
-    <%= link_to "All Assignments", assignments_path, class:"btn btn-secondary" %>
+    <%= link_to "Edit", "/assignments/#{@assignment.id}/edit", class:'btn btn-primary' %>       
 <% end %>
+    <%= link_to "All Assignments", assignments_path, class:"btn btn-secondary" %>

@@ -5,8 +5,9 @@ class TeachersController < ApplicationController
   
   
   def index
-    @teachers = User.where(user_type:"Teacher")
-    @students = User.where(user_type:"Student")
+    redirect_to root_path
+    # @teachers = User.where(user_type:"Teacher")
+    # @students = User.where(user_type:"Student")
   end
 
   def show

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
-  resources :users, only: [:index, :new, :create]
+  resources :users, only: [:index, :show, :new, :create]
   resources :teachers
   
   resources :students

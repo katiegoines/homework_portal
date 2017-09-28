@@ -3,23 +3,23 @@
     <%= form_for @assignment do |f| %>
         <div class="form-group">
             <%= f.label :assignment_number, "Assignment number" %>
-            <%= f.number_field :assignment_number, disabled: true, class:"form-control" %>
+            <%= f.number_field :assignment_number, class:"form-control" %>
         </div>
         <div class="form-group">
-            <%= f.label :title, "Title of Article" %><br />
+            <%= f.label :title, "Title of Article" %>
             <%= f.text_field :title, class:"form-control" %>
         </div>
         <div class="form-group">
-            <%= f.label :body, "Science Reporter" %><br />
-            <%= f.text_area :body, class:"form-control" %><br />
+            <%= f.label :body, "Science Reporter" %>
+            <%= f.text_area :body, class:"form-control" %>
         </div>
         <div class="form-group">
-            <%= f.label :category, "Category of Article" %><br />
-            <%= f.text_field :category, class:"form-control" %><br />
+            <%= f.label :category, "Category of Article" %>
+            <%= f.text_field :category, class:"form-control" %>
         </div>
         <div class="form-group">
-            <%= f.label :link, "Link to Article" %><br />
-            <%= f.text_field :link, class:"form-control" %><br /><br />
+            <%= f.label :link, "Link to Article" %>
+            <%= f.text_field :link, class:"form-control" %>
         </div>
         <div class="form-group">
             <%= f.label :submit, "Are you ready to submit?" %>

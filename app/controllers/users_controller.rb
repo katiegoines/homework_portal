@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    redirect_to new_session_path
+  end
+
   def create
     @user = User.new(user_params)
     if @user.code == "1234"

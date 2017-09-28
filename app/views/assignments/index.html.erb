@@ -1,49 +1,47 @@
-<h1><%= "#{@current_user.name} #{current_user.surname}'s Assignments" %></h1>
+<h1><%= "#{@current_user.name} #{current_user.surname}'s Assignments" %></h1><br /><br />
 
-<%= link_to "Post a new assignment", new_assignment_path, class:'btn' %>
 
-<div class="clear"></div>
+<div class="btn btn-outline-primary" data-toggle="collapse" data-target="#submitted">See Submitted</div>
+<div class="btn btn-outline-primary" data-toggle="collapse" data-target="#in_prog">See In Progress</div>
+<%= link_to "Post a new assignment", new_assignment_path, class:'btn btn-outline-primary' %>
+<hr />
 
-<h2 class="in">Submitted</h2>
-<h4 class="btn" data-toggle="collapse" data-target="#submitted" aria-expanded="false" aria-controls="collapseExample">Hide/Show</h4>
-<div class="clear"></div>
 <div class="panel-collapse collapse" id="submitted"> 
-  <% @user.assignments.where(submit:"Yes").reverse.each do |a| %>
-  <div class="card" style="width: 20rem;">
+
+    <h2>Submitted</h2>        
+    <% @submitted.each do |a| %>
+    <div class="card" style="width: 20rem;">
         <div class="card-body">
             <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
+            <h6 class="card-subtitle mb-2 text-muted"><%= "Assignment: #{a.assignment_number}" %></h6>            
             <p class="card-text"><%= a.body.truncate(80) %></p>
             <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
         </div>
         <div class="card-footer text-muted">
-            <%= "Submitted: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")}" %>
+            <%= a.submit == "Yes" ? "Submitted: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")}" : "Last updated: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")}"  %>
         </div>
     </div>
     <% end %>
 </div>
 
-    <div class="clear"></div>
+<div class="clear"></div>
 
-    <h2 class="in">In Progress</h2>
-    <h4 class="btn" data-toggle="collapse" data-target="#prog" aria-expanded="false" aria-controls="collapseExample">Hide/Show</h4>
-    <div class="clear"></div>
-    <div class="panel-collapse collapse" id="prog"> 
-    
+<div class="panel-collapse collapse in" id="in_prog"> 
+    <h2>In Progress</h2>
     <% @user.assignments.where(submit:"No").reverse.each do |a| %>
     <div class="card" style="width: 20rem;">
-          <div class="card-body">
-              <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
-              <p class="card-text"><%= a.body.truncate(80) %></p>
-              <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
-              <%= link_to "Edit Report", "/assignments/#{a.id}/edit", class:'card-link' %>
-          </div>
-          <div class="card-footer text-muted">
-                <%= "Last updated: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")}" %>
-            </div>
-      </div>
-      <% end %>
+        <div class="card-body">
+            <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
+            <h6 class="card-subtitle mb-2 text-muted"><%= "Assignment: #{a.assignment_number}" %></h6>                        
+            <p class="card-text"><%= a.body.truncate(80) %></p>
+            <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
+            <%= link_to "Edit Report", "/assignments/#{a.id}/edit", class:'card-link' %>
+        </div>
+        <div class="card-footer text-muted">
+            <%= "Last updated: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")}" %>
+        </div>
+    </div>
+    <% end %>
+</div>
 
-      <div class="clear"></div>
-
-
-
+<div class="clear"></div>
