@@ -6,15 +6,12 @@
 </div>
 
 <div class="show-assignment">
-<h1><%= @assignment.title %></h1>
-
-<p><%= @assignment.body %></p>
-
-<p>Article Category: <%= @assignment.category %></p>
-<p>Link to Article: <%= link_to @assignment.link, @assignment.link, target:"_blank" %></p>
-
-<% if @assignment.submit == "No" %>
-    <%= link_to "Edit", "/assignments/#{@assignment.id}/edit", class:'btn btn-primary' %>       
-<% end %>
+    <h1><%= @assignment.title %></h1>
+    <p><%= @assignment.body %></p>
+    <p>Article Category: <%= @assignment.category %></p>
+    <p>Link to Article: <%= link_to @assignment.link, @assignment.link, target:"_blank" %></p>
+    <% if @assignment.submit == "No" %>
+        <%= link_to "Edit", "/assignments/#{@assignment.id}/edit", class:'btn btn-primary' %>       
+    <% end %>
     <%= link_to "All Assignments", assignments_path, class:"btn btn-secondary" %>
 </div>

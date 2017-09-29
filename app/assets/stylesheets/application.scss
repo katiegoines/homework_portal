@@ -1,6 +1,31 @@
 
 @import "bootstrap";
 
+// Revisions to Bootstrap CSS
+
+.col-sm-9 {
+    padding: 15px 15px 15px 25px;
+    min-height:100vh;
+}
+
+.col-sm-3 {
+    padding: 15px 25px 0 15px;
+    margin-bottom:10px;
+}
+
+.navbar-brand, .display-3 {
+    font-family: 'Pangolin', cursive;
+}
+
+.jumbotron {
+    background-image: image-url("cells.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+    min-height:205px;
+}
+
 a, .btn-outline-primary {
     color: #286DA8;
 }
@@ -19,56 +44,6 @@ a, .btn-outline-primary {
     border: 1px solid #438496;
 }
 
-.formish {
-    margin: 15px;
-}
-
-.form_head {
-    margin-bottom: 20px;
-}
-
-
-.col-sm-3 {
-    padding: 15px 25px 0 15px;
-    margin-bottom:10px;
-    
-}
-
-.jumbotron {
-    background-image: image-url("cells-under-a-microscope-muted2.jpg");
-    background-size:cover;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-position:center;
-    min-height:205px;
-}
-
-.sidebar, nav, {
-    background-color:#f8f9fa;
-}
-
-.sidebar {
-    height: 100%;    
-    margin: 0px;
-    padding:15px;
-    border-radius:5px;
-}
-
-nav {
-    border-radius:0 0 5px 5px;
-}
-
-.list {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.col-sm-9 {
-    padding: 15px 15px 15px 25px;
-    min-height:100vh;
-}
-
 .card {
     float:left;
     margin: 15px;
@@ -78,22 +53,47 @@ nav {
     height: 230px;    
 }
 
-.clear {
-    clear:both;
-}
-
 .card-footer {
     font-size: 10px;
 }
 
-.navbar-brand, .display-3 {
-    font-family: 'Pangolin', cursive;
+
+// New CSS
+
+nav {
+    border-radius:0 0 5px 5px;
+}
+
+.sidebar {
+    background-color:#f8f9fa;    
+    height: 100%;    
+    margin: 0px;
+    padding:15px;
+    border-radius:5px;
+}
+
+.list {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .jumbotron-overlay{
     background: rgba(248,249,250,0.7);
     border-radius:5px;
     padding: 15px;
+}
+
+.formish {
+    margin: 15px;
+}
+
+.form_head {
+    margin-bottom: 20px;
+}
+
+.clear {
+    clear:both;
 }
 
 .show-assignment {

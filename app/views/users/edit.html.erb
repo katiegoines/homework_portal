@@ -1,9 +1,9 @@
 <div class="jumbotron">
-        <div class="jumbotron-overlay">
-            <small><%= student? ? "Student Account" : "Teacher Account" %> - Edit Profile</small>
-            <h1 class="display-3"><%= "#{@user.name} #{@user.surname}" %></h1>
-        </div>
+    <div class="jumbotron-overlay">
+        <small><%= student? ? "Student Account" : "Teacher Account" %> - Edit Profile</small>
+        <h1 class="display-3"><%= "#{@user.name} #{@user.surname}" %></h1>
     </div>
+</div>
 
 <div class="formish">
     <%= form_for @user do |f| %>
@@ -33,7 +33,6 @@
                 <%= f.label :password_confirmation, "Confirm New Password" %>
                 <%= f.password_field :password_confirmation, class:"form-control"  %>
             </div>
-        
             <%= f.submit "Update", class:"btn btn-primary" %>
             <%= link_to "Cancel", user_path(current_user), class:"btn btn-secondary" %>
             <% unless @user.user_type == "Student" %>

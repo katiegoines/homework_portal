@@ -1,14 +1,12 @@
 <div class="card" style="width: 20rem;">
-        <div class="card-body">
-            <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
-            <h6 class="card-subtitle mb-2 text-muted"><%= "by #{a.user.name} #{a.user.surname}" %></h6>                        
-            
-            <p class="card-text"><%= a.body.truncate(80) %></p>
-            <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
-            <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
-        </div>
-        <div class="card-footer text-muted">
-            <%= a.submit == "Yes" ? "Submitted:" : "Last Update:" %>
-            <%= "#{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")} -- Report ##{a.assignment_number}" %>
-        </div>
+    <div class="card-body">
+        <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= "by #{a.user.name} #{a.user.surname}" %></h6>                        
+        <p class="card-text"><%= a.body.truncate(80) %></p>
+        <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
     </div>
+    <div class="card-footer text-muted">
+        <%= a.submit == "Yes" ? "Submitted:" : "Last Update:" %>
+        <%= "#{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")} -- Report ##{a.assignment_number}" %>
+    </div>
+</div>

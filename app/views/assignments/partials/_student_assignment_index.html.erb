@@ -1,29 +1,24 @@
+    <div class="btn btn-outline-primary" data-toggle="collapse" data-target="#submitted">See Submitted</div>
+    <div class="btn btn-outline-primary" data-toggle="collapse" data-target="#in_prog">See In Progress</div>
+    <%= link_to "Post a new assignment", new_assignment_path, class:'btn btn-outline-primary' %>
+    <%= link_to "Back to Profile", user_path(current_user), class:"btn btn-outline-primary" %>
 
+    <div class="panel-collapse collapse" id="submitted"> 
+        <hr />
+        <h2>Submitted</h2>        
+        <% @submitted.each do |a| %>
+            <%= render 'layouts/partials/card', :a => a %>
+        <% end %>
+    </div>
 
+    <div class="clear"></div>
 
-<div class="btn btn-outline-primary" data-toggle="collapse" data-target="#submitted">See Submitted</div>
-<div class="btn btn-outline-primary" data-toggle="collapse" data-target="#in_prog">See In Progress</div>
-<%= link_to "Post a new assignment", new_assignment_path, class:'btn btn-outline-primary' %>
-<%= link_to "Back to Profile", user_path(current_user), class:"btn btn-outline-primary" %>
+    <div class="panel-collapse collapse in" id="in_prog"> 
+        <hr />        
+        <h2>In Progress</h2>
+        <% @user.assignments.where(submit:"No").reverse.each do |a| %>
+            <%= render 'layouts/partials/card', :a => a %>
+        <% end %>
+    </div>
 
-
-
-<div class="panel-collapse collapse" id="submitted"> 
-    <hr />
-    <h2>Submitted</h2>        
-    <% @submitted.each do |a| %>
-        <%= render 'layouts/partials/card', :a => a %>
-    <% end %>
-</div>
-
-<div class="clear"></div>
-
-<div class="panel-collapse collapse in" id="in_prog"> 
-    <hr />        
-    <h2>In Progress</h2>
-    <% @user.assignments.where(submit:"No").reverse.each do |a| %>
-        <%= render 'layouts/partials/card', :a => a %>
-    <% end %>
-</div>
-
-<div class="clear"></div>
+    <div class="clear"></div>

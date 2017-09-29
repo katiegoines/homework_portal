@@ -6,16 +6,10 @@ class AssignmentsController < ApplicationController
 
   def index
     @user = User.find_by_id current_user.id
-    # if student?
-      @submitted = @user.assignments.where(submit:"Yes").reverse
-      @in_prog = @user.assignments.where(submit:"No").reverse.each
-      @assignments = Assignment.where(submit:"Yes")
-      @students = User.where(user_type:"Student")
-      
-      
-    # else
-    #   redirect_to user_path(@user)
-    # end
+    @submitted = @user.assignments.where(submit:"Yes").reverse
+    @in_prog = @user.assignments.where(submit:"No").reverse.each
+    @assignments = Assignment.where(submit:"Yes")
+    @students = User.where(user_type:"Student")
   end
 
   def show
@@ -31,10 +25,10 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.new(assignment_params)
     @assignment.user_id = current_user.id
     if @assignment.save
-      flash[:warning] = "Your report has been submitted."
+      flash[:success] = "Your report has been submitted."
       redirect_to user_path(@user)
     else
-      flash[:error] = "Your report did not submit. Please try again."
+      flash[:warning] = "Your report did not submit. Please try again."
       redirect_to new_assignment_path
     end
   end
@@ -49,10 +43,10 @@ class AssignmentsController < ApplicationController
   def update
     @assignment = Assignment.find(params[:id])
     if @assignment.update(assignment_params)
-      flash[:error] = "Your changes have been saved."
+      flash[:success] = "Your changes have been saved."
       redirect_to assignment_path(@assignment)
     else 
-      flash[:error] = "Please check all of your fields."
+      flash[:warning] = "Your changes were not saved. Please check all of your fields."
       redirect_to edit_assignment_path
     end
   end
@@ -60,7 +54,7 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment = Assignment.find(params[:id])
     if @assignment.destroy
-      flash[:warning] = "Your report has been deleted."
+      flash[:danger] = "Your report has been deleted."
       redirect_to user_path(current_user)
     end
   end

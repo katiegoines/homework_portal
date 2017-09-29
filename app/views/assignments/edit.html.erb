@@ -1,12 +1,12 @@
 <div class="jumbotron">
-        <div class="jumbotron-overlay">
-            <small><%= student? ? "Student Account" : "Teacher Account" %> - Edit Profile</small>
-            <h1 class="display-3"><%= "#{current_user.name} #{current_user.surname}" %></h1>
-        </div>
+    <div class="jumbotron-overlay">
+        <small><%= student? ? "Student Account" : "Teacher Account" %> - Edit Profile</small>
+        <h1 class="display-3"><%= "#{current_user.name} #{current_user.surname}" %></h1>
     </div>
+</div>
 
 <div class="formish">
-        <h1 class="form_head">Edit Assignment</h1>
+    <h1 class="form_head">Edit Assignment</h1>
     <%= form_for @assignment do |f| %>
         <div class="form-group">
             <%= f.label :assignment_number, "Assignment number" %>
@@ -32,9 +32,8 @@
             <%= f.label :submit, "Are you ready to submit?" %>
             <%= f.select :submit, ["No", "Yes"], class:"form-control" %>
         </div>
-        <br />
-            <%= f.submit "Update", class:"btn btn-primary" %>
-            <%= link_to "Cancel", assignment_path, class:"btn btn-secondary" %>
-            <%= link_to "Delete", assignment_path, data: {confirm: "Are you sure you want to delete this report? This cannot be undone."}, method: 'delete', class:"btn btn-danger" %>
+        <%= f.submit "Update", class:"btn btn-primary" %>
+        <%= link_to "Cancel", assignment_path, class:"btn btn-secondary" %>
+        <%= link_to "Delete", assignment_path, data: {confirm: "Are you sure you want to delete this report? This cannot be undone."}, method: 'delete', class:"btn btn-danger" %>
     <% end %>
 </div>
