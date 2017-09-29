@@ -5,7 +5,7 @@
 
     <div class="panel-collapse collapse" id="submitted"> 
         <hr />
-        <h2>Submitted</h2>        
+        <h3>Submitted</h3>        
         <% @submitted.each do |a| %>
             <%= render 'layouts/partials/card', :a => a %>
         <% end %>
@@ -15,7 +15,7 @@
 
     <div class="panel-collapse collapse in" id="in_prog"> 
         <hr />        
-        <h2>In Progress</h2>
+        <h3>In Progress</h3>
         <% @user.assignments.where(submit:"No").reverse.each do |a| %>
             <%= render 'layouts/partials/card', :a => a %>
         <% end %>
