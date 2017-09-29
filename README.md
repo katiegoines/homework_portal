@@ -66,7 +66,7 @@ Additional features and functionality that are intended to be built into this ap
 
 
 
-### MVP - Technical Requirements
+### Technical Requirements
 
 - Two models: User and Assignment (ERD included in [Trello](https://trello.com/b/h4OaN3eV/project-2))
 - Sign up/log in functionality with authentication - users also have restricted access based on their user_type
