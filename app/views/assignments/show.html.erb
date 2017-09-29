@@ -8,4 +8,4 @@
 <% if @assignment.submit == "No" %>
     <%= link_to "Edit", "/assignments/#{@assignment.id}/edit", class:'btn btn-primary' %>       
 <% end %>
-    <%= link_to "All Assignments", assignments_path, class:"btn btn-secondary" %>
+    <%= link_to "All Assignments", assignments_path, class:"btn btn-secondary", target:"_blank" %>
