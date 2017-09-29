@@ -25,7 +25,7 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.new(assignment_params)
     @assignment.user_id = current_user.id
     if @assignment.save
-      flash[:success] = "Your report has been submitted."
+      flash[:success] = "Your report has been saved."
       redirect_to user_path(@user)
     else
       flash[:warning] = "Your report did not submit. Please try again."
