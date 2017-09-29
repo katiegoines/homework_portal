@@ -4,40 +4,24 @@
 
 This app is an assignment submitting portal, where students can draft and submit summary reports of articles weekly. The app is currently built  specifically for the needs of one teacher, however the intention is to continue building this out so it has a more robust suite of features and capabilities for wider use among educators and students. 
 
-Please check out Science Reporter [here](https://science-reporter.herokuapp.com/).
+[Check it out](https://science-reporter.herokuapp.com/).
 
 
 
 ### Technology
 
-Ruby on Rails, Postgresql, Bcrpyt (ruby gem for the encryption of passwords), Bootstrap, HTML, CSS/SASS
-
-Ruby version 2.4.1
-
-Rails version 5.1.4
-
-Bootstrap version 4.0
+- Ruby on Rails (Ruby version 2.4.1, Rails version 5.1.4)
+- Postgresql
+- Bcrpyt (ruby gem for the encryption of passwords)
+- Bootstrap (version 4.0)
+- HTML
+- CSS/SASS
 
 
 
 ### Approach
 
-Initial planning for this app included creating a basic wireframe for overall app layout, followed by the creation of **user stories** using Trello, which can be found [here](https://trello.com/b/h4OaN3eV/project-2).
-
-
-
-### MVP
-
-##### Technical Requirements
-
-- Two models: User and Assignment (shown below)<img src="https://i.imgur.com/qRUkU4j.png" align="left" width="300" alt="ERD">
-- Sign up/log in functionality with authentication - users also have restricted access based on their user_type
-- Complete RESTful routes for both models
-- Full CRUD for both models, with restrictions
-- Semantically clean HTML and CSS, with the exception of Jumbotron, which may be overused and could have been replaced with custom CSS
-- Deployed online via Heroku
-
-
+Initial planning for this app included creating a basic wireframe for overall app layout, followed by the creation of **user stories** using [Trello](https://trello.com/b/h4OaN3eV/project-2).
 
 
 
@@ -82,3 +66,11 @@ Additional features and functionality that are intended to be built into this ap
 
 
 
+### MVP - Technical Requirements
+
+- Two models: User and Assignment (ERD included in [Trello](https://trello.com/b/h4OaN3eV/project-2))
+- Sign up/log in functionality with authentication - users also have restricted access based on their user_type
+- Complete RESTful routes for both models
+- Full CRUD for both models, with restrictions
+- Semantically clean HTML and CSS, with the exception of Jumbotron, which may be overused and could have been replaced with custom CSS
+- Deployed online via Heroku
