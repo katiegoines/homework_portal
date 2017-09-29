@@ -3,10 +3,10 @@
 <div class="btn btn-outline-primary" data-toggle="collapse" data-target="#by_assignment">By Assignment</div>
 <div class="btn btn-outline-primary" data-toggle="collapse" data-target="#by_student">By Student</div>
 <%= link_to "Back to Profile", user_path(current_user), class:"btn btn-outline-primary" %>
-<hr />
 
 
 <div class="panel-collapse collapse" id="by_assignment"> 
+    <hr />
     <h2>By Assignment</h2>        
     <%= render 'assignments/partials/by_assgn' %>
 </div>

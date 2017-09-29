@@ -6,10 +6,10 @@
 <%= link_to "Post a new assignment", new_assignment_path, class:'btn btn-outline-primary' %>
 <%= link_to "Back to Profile", user_path(current_user), class:"btn btn-outline-primary" %>
 
-<hr />
+
 
 <div class="panel-collapse collapse" id="submitted"> 
-
+        <hr />
     <h2>Submitted</h2>        
     <% @submitted.each do |a| %>
         <%= render 'layouts/partials/card', :a => a %>

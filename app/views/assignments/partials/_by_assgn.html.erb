@@ -1,10 +1,10 @@
 <% @assignments.order("assignment_number DESC").each do |s| %>
-<%= "Assignment Number #{s.assignment_number}" %>
-<div class="clear"></div>
-<% @assignments.where(assignment_number:"#{s.assignment_number}").each do |a| %>
-    <%= render 'layouts/partials/card', :a => a %>
-<% end %>
-<div class="clear"></div>
+    <%= "Assignment Number #{s.assignment_number}" %>
+    <div class="clear"></div>
+    <% @assignments.where(assignment_number:"#{s.assignment_number}").each do |a| %>
+        <%= render 'layouts/partials/card', :a => a %>
+    <% end %>
+    <div class="clear"></div>
 <% end %>
 
 <div class="clear"></div>

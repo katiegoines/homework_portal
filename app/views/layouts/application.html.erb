@@ -13,15 +13,20 @@
       <%= render 'layouts/partials/flash' %> 
 
     
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-3">
-            <h2>Articles</h2>
-              <% @reports.each do |a| %>
-                <%= link_to a.title.truncate(30), "#{a.link}", target:"_blank" %><br />
+            <div class="col-sm-9"> <%= yield %></div>
+            
+          <div class="col-sm-3">
+            <div class="sidebar">
+            <h4>Latest Articles</h4>
+            <div class="list">
+              <% @reports.take(10).each do |a| %>
+                <%= link_to a.title, "#{a.link}", target:"_blank" %><br />
               <% end %>
+            </div>
+            </div>
           </div>
-          <div class="col-9"> <%= yield %></div>
         </div>
 
      
