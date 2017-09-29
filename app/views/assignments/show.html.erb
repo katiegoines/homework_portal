@@ -1,11 +1,20 @@
+<div class="jumbotron">
+    <div class="jumbotron-overlay">
+        <small>Science Reporter by</small>
+        <h1 class="display-3"><%= "#{@assignment.user.name} #{@assignment.user.surname}" %></h1>
+    </div>
+</div>
+
+<div class="show-assignment">
 <h1><%= @assignment.title %></h1>
-<p>Article Category: <%= @assignment.category %></p>
+
 <p><%= @assignment.body %></p>
 
-
+<p>Article Category: <%= @assignment.category %></p>
 <p>Link to Article: <%= link_to @assignment.link, @assignment.link, target:"_blank" %></p>
 
 <% if @assignment.submit == "No" %>
     <%= link_to "Edit", "/assignments/#{@assignment.id}/edit", class:'btn btn-primary' %>       
 <% end %>
     <%= link_to "All Assignments", assignments_path, class:"btn btn-secondary" %>
+</div>

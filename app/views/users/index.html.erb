@@ -1,9 +1,9 @@
 <div class="jumbotron">
     <div class="jumbotron-overlay">
     <h1 class="display-3">Yay Science!</h1>
-    <p class="lead">In this app, students are able to work on and submit their "Science Reporter" assignments. It's also a place to check out the articles that students have reported on thus far (see the list on the left!)</p>
+    <p class="lead"> And yay learning. In seventh grade, we focus on Life Science - hence the cells - but we don't want to limit ourselves to learning about only human biology. Each week, students will find a science-related article that piques their interest and submit an abstract. </p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p>In this app, students are able to work on and submit their "Science Reporter" assignments. It's also a place to check out the articles that students have reported on thus far - see the latest listed on the right!</p>
     <p class="lead">
         <% if logged_in? %>
             <%= link_to "Go To Your Profile", user_path(current_user), class:"btn btn-primary btn-lg" %>
@@ -15,4 +15,4 @@
 </div>
 </div>
 
-<p><strong>How to use this portal:</strong> <%= link_to"Log in", new_session_path %> or <%= link_to "create an account", new_user_path %>, then upload your Science Reporters. You can choose whether you reports should be shared only with your teacher or if you want to share them with the class. </p>
+<p><strong>How to use this portal:</strong> <%= link_to"Log in", new_session_path %> or <%= link_to "create an account", new_user_path %>, then post your Science Reporter assignments. Feel free to keep coming back to work on your assignment until you're ready to submit it. </p>

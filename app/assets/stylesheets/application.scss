@@ -40,6 +40,7 @@ a, .btn-outline-primary {
     background-repeat:no-repeat;
     background-attachment:fixed;
     background-position:center;
+    min-height:205px;
 }
 
 .sidebar, nav, {
@@ -93,4 +94,10 @@ nav {
     background: rgba(248,249,250,0.7);
     border-radius:5px;
     padding: 15px;
+}
+
+.show-assignment {
+    width: 80%;
+    margin: 0 auto;
+    padding-left:15px;
 }

@@ -1,5 +1,12 @@
+<div class="jumbotron">
+        <div class="jumbotron-overlay">
+            <small><%= student? ? "Student Account" : "Teacher Account" %> - Edit Profile</small>
+            <h1 class="display-3"><%= "#{current_user.name} #{current_user.surname}" %></h1>
+        </div>
+    </div>
+
 <div class="formish">
-        <h1 class="form_head">Edit your assignment.</h1>
+        <h1 class="form_head">Edit Assignment</h1>
     <%= form_for @assignment do |f| %>
         <div class="form-group">
             <%= f.label :assignment_number, "Assignment number" %>
