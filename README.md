@@ -10,7 +10,7 @@ Please check out Science Reporter [here](https://science-reporter.herokuapp.com/
 
 ### Technology
 
-Ruby on Rails, Postgresql, Bcrpyt, Bootstrap, HTML, CSS
+Ruby on Rails, Postgresql, Bcrpyt (ruby gem for the encryption of passwords), Bootstrap, HTML, CSS/SASS
 
 Ruby version 2.4.1
 
@@ -26,23 +26,36 @@ Initial planning for this app included creating a basic wireframe for overall ap
 
 
 
+### MVP
+
+##### Technical Requirements
+
+- Two models: User and Assignment (shown below)<img src="https://i.imgur.com/qRUkU4j.png" align="left" width="300" alt="ERD">
+- Sign up/log in functionality with authentication - users also have restricted access based on their user_type
+- Complete RESTful routes for both models
+- Full CRUD for both models, with restrictions
+- Semantically clean HTML and CSS, with the exception of Jumbotron, which may be overused and could have been replaced with custom CSS
+- Deployed online via Heroku
+
+
+
+
+
 ### Installation/Startup Instructions
 
-- Download the repository from Github to a local directory.
-- Open up the project directory in terminal and run  `bundle install` to install any gems needed. 
-- Start Postgres local server.
-- In terminal, run `rake db:migrate` to migrate the app's existing tables on Postgresql.
-- In terminal, run `rails server` to start a local server so you can view the application locally.
-- In the address bar of your browser, go to localhost:3000.
-- You have now launched the app locally. Create accounts and assignments as you wish.
+- Download the repository from Github to a local directory
+- Open up the project directory in terminal and run  `bundle install` to install any gems needed
+- Start Postgres local server
+- In terminal, run `rake db:migrate` to migrate the app's existing tables on Postgresql
+- In terminal, run `rails server` to start a local server so you can view the application locally
+- In the address bar of your browser, go to localhost:3000
+- You have now launched the app locally. Create accounts and assignments as you wish
 
 
 
 ### Unresolved Issues
 
 When you're logged in as a teacher and in the assignments index, you are able to view reports by student, however the intention was to also be able to view by report. Additional work is required to get this functional.
-
-Styling needs work.
 
 There is currently no one assigned as an Admin, who can own the portal and reset the teacher code when necessary. 
 
@@ -57,7 +70,7 @@ Additional features and functionality that are intended to be built into this ap
 - Additional models to be built to separate students by class and teacher.
 - Students will be able to decide whether they want their reports to be shared with other students, or just with their teacher.
 - Students will be able to check whether a report on a link they have chosen is already in the database (and restrict links that have already been submitted) prior to reaching the "New Report" form.
-- Stick header to the top of the page.
+- Revise styling, including fixing header to the top of the page.
 
 
 
@@ -65,6 +78,7 @@ Additional features and functionality that are intended to be built into this ap
 
 - Google Fonts [[1]](https://fonts.google.com/specimen/Pangolin) 
 - Background Image [[1]](http://knowscience.org/wp-content/uploads/2014/01/cells-under-a-microscope.jpg)
+- Color scheme [[1]](https://designschool.canva.com/blog/website-color-schemes/)
 
 
 
