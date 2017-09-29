@@ -1,7 +1,9 @@
 <div class="jumbotron">
+    <div class="jumbotron-overlay">
         <small><%= student? ? "Student Account" : "Teacher Account" %></small>
         <h1 class="display-3"><%= "#{@user.name} #{@user.surname}" %></h1>
     </div>
+</div>
 
 <% if @user.user_type == "Teacher" %>
     <%= render 'users/partials/show_teacher' %> 

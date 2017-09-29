@@ -1,4 +1,4 @@
-<h1><%= "#{@current_user.name} #{current_user.surname}'s Assignments" %></h1><br /><br />
+
 
 
 <div class="btn btn-outline-primary" data-toggle="collapse" data-target="#submitted">See Submitted</div>
@@ -9,7 +9,7 @@
 
 
 <div class="panel-collapse collapse" id="submitted"> 
-        <hr />
+    <hr />
     <h2>Submitted</h2>        
     <% @submitted.each do |a| %>
         <%= render 'layouts/partials/card', :a => a %>
@@ -19,6 +19,7 @@
 <div class="clear"></div>
 
 <div class="panel-collapse collapse in" id="in_prog"> 
+    <hr />        
     <h2>In Progress</h2>
     <% @user.assignments.where(submit:"No").reverse.each do |a| %>
         <%= render 'layouts/partials/card', :a => a %>
