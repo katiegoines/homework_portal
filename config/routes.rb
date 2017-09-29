@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   root 'users#index'
 
   resources :users
-  resources :teachers
-  
-  resources :students
   resources :assignments, except: [:destroy]
   delete 'assignments/:id' => 'assignments#destroy'
   resources :sessions, except: [:destroy]

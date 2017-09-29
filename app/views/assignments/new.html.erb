@@ -1,14 +1,18 @@
+
+
 <div class="formish">
     <h1 class="form_head">Submit a new assignment.</h1>
     <%= form_for @assignment do |f| %>
-        <div class="form-group">
-            <%= f.label :assignment_number, "Assignment number" %>
-            <%= f.number_field :assignment_number, class:"form-control" %>
-        </div>
+        
+        
         <div class="form-group">
             <%= f.label :title, "Title of Article" %>
             <%= f.text_field :title, class:"form-control" %>
         </div>
+        <div class="form-group">
+                <%= f.label :link, "Link to Article" %>
+                <%= f.text_field :link, class:"form-control" %>
+            </div>
         <div class="form-group">
             <%= f.label :body, "Science Reporter" %>
             <%= f.text_area :body, class:"form-control" %>
@@ -18,9 +22,10 @@
             <%= f.text_field :category, class:"form-control" %>
         </div>
         <div class="form-group">
-            <%= f.label :link, "Link to Article" %>
-            <%= f.text_field :link, class:"form-control" %>
-        </div>
+                <%= f.label :assignment_number, "Assignment number" %>
+                <%= f.number_field :assignment_number, class:"form-control" %>
+            </div>
+       
         <div class="form-group">
             <%= f.label :submit, "Are you ready to submit?" %>
             <%= f.select :submit, ["No", "Yes"], class:"form-control" %>

@@ -10,7 +10,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if @user.user_type == "Teacher"
+    if student?
+      @assignment = Assignment.new
+    else
       @students = User.where(user_type:"Student")
       @assignments = Assignment.where(submit:"Yes")
     end
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
         redirect_to user_path(@user)
       else
         if !!@user.email
-          flash[:error] = "This email is already in use"
+          flash[:error] = "Please make sure this email is formatted correctly and isn't already in use."
           redirect_to new_user_path
         elsif
           @user.password == '' || @user.password_confirmation == ''
@@ -53,7 +55,7 @@ class UsersController < ApplicationController
         redirect_to user_path(@user)
       else
         if !!@user.email
-          flash[:error] = "This email is already in use"
+          flash[:error] = "Please make sure this email is formatted correctly and isn't already in use."
           redirect_to new_user_path
         elsif
           @user.password == '' || @user.password_confirmation == ''
@@ -92,7 +94,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find_by_id current_user.id
-    if @user.user_id == "Teacher"
+    if @user.user_type == "Teacher"
       session[:user_id] = nil
       if @user.destroy
         flash[:warning] = "Your account has been permanently deleted."

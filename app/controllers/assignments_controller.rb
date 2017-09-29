@@ -6,12 +6,16 @@ class AssignmentsController < ApplicationController
 
   def index
     @user = User.find_by_id current_user.id
-    if student?
+    # if student?
       @submitted = @user.assignments.where(submit:"Yes").reverse
       @in_prog = @user.assignments.where(submit:"No").reverse.each
-    else
-      redirect_to user_path(@user)
-    end
+      @assignments = Assignment.where(submit:"Yes")
+      @students = User.where(user_type:"Student")
+      
+      
+    # else
+    #   redirect_to user_path(@user)
+    # end
   end
 
   def show
@@ -23,12 +27,12 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    @student = Student.find_by_id current_user.id
+    @user = User.find_by_id current_user.id
     @assignment = Assignment.new(assignment_params)
     @assignment.user_id = current_user.id
     if @assignment.save
       flash[:warning] = "Your report has been submitted."
-      redirect_to student_path(@student)
+      redirect_to user_path(@user)
     else
       flash[:error] = "Your report did not submit. Please try again."
       redirect_to new_assignment_path
@@ -57,7 +61,7 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     if @assignment.destroy
       flash[:warning] = "Your report has been deleted."
-      redirect_to student_path(current_user)
+      redirect_to user_path(current_user)
     end
   end
 

@@ -1,44 +1,10 @@
-<h1><%= "#{@user.name} #{@user.surname}" %></h1>
-
-<h2>List of All Students</h2>
-
-<% @students.each do |s| %>
-    <%= "#{s.name} #{s.surname}" %><br />
-    <% @assignments.where(user_id:"#{s.id}").reverse.each do |a| %>
-    <div class="card" style="width: 20rem;">
-          <div class="card-body">
-              <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
-              <!-- <h6 class="card-subtitle mb-2 text-muted"><%= "#{s.name} #{s.surname}" %></h6> -->
-              <p class="card-text"><%= a.body.truncate(80) %></p>
-              <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
-              <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
-          </div>
-          <div class="card-footer text-muted">
-                <%= "Last updated: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at %l:%M%P")}" %>
-            </div>
-      </div>
-      <% end %>
-      <div class="clear"></div>
+<h3>Recently Submitted</h3>
+<% @assignments.where(submit:"Yes").order('updated_at DESC').take(2).each do |a| %>
+    <%= render 'layouts/partials/card', :a => a %>
 <% end %>
-
-<!-- <% @assignments.reverse.each do |a| %>
-<div class="card" style="width: 20rem;">
-      <div class="card-body">
-          <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
-          <p class="card-text"><%= a.body.truncate(80) %></p>
-          <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
-          <%= link_to "Article Link", "#{a.link}", class:'card-link' %>
-      </div>
-  </div>
-  <% end %> -->
-
-
-
-
-
-
-  <div class="clear"></div>
-  
-<br />
-<br />
-<%= link_to "Edit Profile", edit_user_path %>
+<div class="clear"></div>
+<p class="lead">
+    <%= link_to "See all submitted reports", assignments_path, class:'btn' %>
+    <%= link_to "Edit Profile", edit_user_path, class:'btn' %>
+    
+</p>

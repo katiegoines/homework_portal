@@ -1,29 +1,42 @@
-<div class="jumbotron">
-    <small>Student Account</small>
-    <h1 class="display-3"><%= "#{@user.name} #{@user.surname}" %></h1>
-    <hr class="my-4">
+
     <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
     
     <h3>Recently Submitted</h3>
     <% @user.assignments.where(submit:"Yes").order('updated_at DESC').take(2).each do |a| %>
-    <div class="card" style="width: 20rem;">
-        <div class="card-body">
-            <h4 class="card-title"><%= link_to a.title.truncate(40), "/assignments/#{a.id}" %></h4>
-            <p class="card-text"><%= a.body.truncate(80) %></p>
-            <%= link_to "Read More", "/assignments/#{a.id}", class:'card-link' %>
-            <!-- <%= link_to "Article Link", "#{a.link}", class:'card-link' %> -->
-        </div>
-        <div class="card-footer text-muted">
-            <%= "Last updated: #{a.updated_at.in_time_zone('EST').strftime("%a, %b %e, %Y at  %l:%M%P")}" %>
-        </div>
-    </div>
+        <%= render 'layouts/partials/card', :a => a %>
     <% end %>
     <div class="clear"></div>
     <p class="lead">
         <%= link_to "See all assignments", assignments_path, class:'btn' %>
-        <%= link_to "Post a new assignment", new_assignment_path, class:'btn' %>
+        <%= link_to "Post a new assignment", new_assignment_path, class:"btn" %>
         <%= link_to "Change Password", edit_user_path, class:'btn' %>
         
     </p>
 
-</div>
+
+
+
+    <!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Check to see if your article has been used before:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <%= form_for @assignment do |f| %>
+                    <%= f.text_field :link %>
+                    <%= f.submit %>
+                <% end %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- , "#", data:{toggle:"modal", target:"#modal"} -->

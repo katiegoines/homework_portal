@@ -1,5 +1,12 @@
+<div class="jumbotron">
+        <small><%= student? ? "Student Account" : "Teacher Account" %></small>
+        <h1 class="display-3"><%= "#{@user.name} #{@user.surname}" %></h1>
+        <hr class="my-4">
+
 <% if @user.user_type == "Teacher" %>
     <%= render 'users/partials/show_teacher' %> 
 <% elsif @user.user_type == "Student" %>
     <%= render 'users/partials/show_student' %>
 <% end %>
+
+</div>

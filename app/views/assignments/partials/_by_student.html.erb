@@ -1,0 +1,7 @@
+<% @students.each do |s| %>
+    <%= "#{s.name} #{s.surname}" %><br />
+    <% @assignments.where(user_id:"#{s.id}").reverse.each do |a| %>
+        <%= render 'layouts/partials/card', :a => a %>
+      <% end %>
+      <div class="clear"></div>
+<% end %>
