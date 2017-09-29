@@ -1,6 +1,6 @@
 # Science Reporter
 
-![Science Reporter](https://i.imgur.com/uzvxgwc.png?1)
+![Science Reporter](https://i.imgur.com/j9hNaB5.png)
 
 This app is an assignment submitting portal, where students can draft and submit summary reports of articles weekly. The app is currently built  specifically for the needs of one teacher, however the intention is to continue building this out so it has a more robust suite of features and capabilities for wider use among educators and students. 
 
@@ -28,7 +28,13 @@ Initial planning for this app included creating a basic wireframe for overall ap
 
 ### Installation/Startup Instructions
 
-
+- Download the repository from Github to a local directory.
+- Open up the project directory in terminal and run  `bundle install` to install any gems needed. 
+- Start Postgres local server.
+- In terminal, run `rake db:migrate` to migrate the app's existing tables on Postgresql.
+- In terminal, run `rails server` to start a local server so you can view the application locally.
+- In the address bar of your browser, go to localhost:3000.
+- You have now launched the app locally. Create accounts and assignments as you wish.
 
 
 
@@ -47,8 +53,6 @@ The Icebox in the Trello linked above (and [here](https://trello.com/b/h4OaN3eV/
 
 
 ### Acknowledgements
-
-##### Fonts
 
 - Google Fonts [[1]](https://fonts.google.com/specimen/Pangolin) 
 - Background Image [[1]](http://knowscience.org/wp-content/uploads/2014/01/cells-under-a-microscope.jpg)
