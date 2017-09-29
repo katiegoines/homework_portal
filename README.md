@@ -49,7 +49,7 @@ Students do not currently belong to a teacher or class period, so all submitted 
 
 ### Future Features and Functionality
 
-Additional features and functionality that are intended to be built into this app in the future are included on the Icebox list on Trello ([here](https://trello.com/b/h4OaN3eV/project-2)) which include,s but is not limited to:
+Additional features and functionality that are intended to be built into this app in the future are included on the Icebox list on [Trello](https://trello.com/b/h4OaN3eV/project-2), which includes but is not limited to:
 
 - Additional models to be built to separate students by class and teacher.
 - Students will be able to decide whether they want their reports to be shared with other students, or just with their teacher.
