@@ -3,9 +3,9 @@
 <p><%= @assignment.body %></p>
 
 
-<p>Link to Article: <%= link_to @assignment.link, @assignment.link %></p>
+<p>Link to Article: <%= link_to @assignment.link, @assignment.link, target:"_blank" %></p>
 
 <% if @assignment.submit == "No" %>
     <%= link_to "Edit", "/assignments/#{@assignment.id}/edit", class:'btn btn-primary' %>       
 <% end %>
-    <%= link_to "All Assignments", assignments_path, class:"btn btn-secondary", target:"_blank" %>
+    <%= link_to "All Assignments", assignments_path, class:"btn btn-secondary" %>
