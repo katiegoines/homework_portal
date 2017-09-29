@@ -38,17 +38,26 @@ Initial planning for this app included creating a basic wireframe for overall ap
 
 
 
-### Unsolved Problems and Next Steps
+### Unresolved Issues
 
 When you're logged in as a teacher and in the assignments index, you are able to view reports by student, however the intention was to also be able to view by report. Additional work is required to get this functional.
 
+Styling needs work.
+
+There is currently no one assigned as an Admin, who can own the portal and reset the teacher code when necessary. 
+
+Students do not currently belong to a teacher or class period, so all submitted reports are accessible by all teachers, which is great for sharing information, but not for grading. In the future, both will be incorporated.
 
 
-The Icebox in the Trello linked above (and [here](https://trello.com/b/h4OaN3eV/project-2)) detail additional features functionality that will be added in the future, including but not limited to:
+
+### Future Features and Functionality
+
+Additional features and functionality that are intended to be built into this app in the future are included on the Icebox list on Trello ([here](https://trello.com/b/h4OaN3eV/project-2)) which include,s but is not limited to:
 
 - Additional models to be built to separate students by class and teacher.
 - Students will be able to decide whether they want their reports to be shared with other students, or just with their teacher.
 - Students will be able to check whether a report on a link they have chosen is already in the database (and restrict links that have already been submitted) prior to reaching the "New Report" form.
+- Stick header to the top of the page.
 
 
 
